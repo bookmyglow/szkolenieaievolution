@@ -147,6 +147,55 @@ export const glossaryTerms: GlossaryTerm[] = [
     relatedLessons: ["4-7"],
     category: "praktyka",
   },
+  {
+    id: "transformer",
+    term: "Architektura Transformer",
+    definition: "Model sieci neuronowej oparty na mechanizmie uwagi (attention), który umożliwia równoległe przetwarzanie sekwencji i jest podstawą większości nowoczesnych modeli językowych.",
+    relatedLessons: ["2-2"],
+    category: "modele",
+  },
+  {
+    id: "embeddings",
+    term: "Embeddings",
+    definition: "Wektory liczbowe reprezentujące znaczenie słów, zdań lub obrazów w przestrzeni cech, używane do porównywania podobieństwa semantycznego.",
+    relatedLessons: ["2-3"],
+    category: "modele",
+  },
+  {
+    id: "rag",
+    term: "Retrieval-Augmented Generation (RAG)",
+    definition: "Technika łącząca generowanie tekstu przez model językowy z wyszukiwaniem aktualnych informacji w bazie wiedzy lub wektorowej, aby ograniczyć halucynacje i dodać kontekst.",
+    relatedLessons: ["4-3", "4-6"],
+    category: "praktyka",
+  },
+  {
+    id: "vector-db",
+    term: "Baza wektorowa",
+    definition: "Specjalistyczna baza danych przechowująca embeddings i umożliwiająca szybkie wyszukiwanie najbliższych wektorów (nearest neighbors), wykorzystywana m.in. w systemach RAG.",
+    relatedLessons: ["4-3"],
+    category: "praktyka",
+  },
+  {
+    id: "lora",
+    term: "LoRA (Low-Rank Adaptation)",
+    definition: "Lekka metoda dostrajania modeli AI polegająca na trenowaniu niewielkiej liczby dodatkowych parametrów, co pozwala szybko specjalizować model przy niskich kosztach obliczeniowych.",
+    relatedLessons: ["4-5"],
+    category: "praktyka",
+  },
+  {
+    id: "diffusion",
+    term: "Modele dyfuzyjne",
+    definition: "Generatywne modele obrazu, które uczą się odwracania procesu dodawania szumu do danych, dzięki czemu potrafią tworzyć realistyczne grafiki z losowego szumu.",
+    relatedLessons: ["3-2"],
+    category: "obrazy",
+  },
+  {
+    id: "safety",
+    term: "Mechanizmy bezpieczeństwa AI",
+    definition: "Zestaw technik i procedur (filtry treści, detekcja nadużyć, monitoring promptów), które ograniczają ryzyko generowania szkodliwych lub wprowadzających w błąd wyników przez modele AI.",
+    relatedLessons: ["3-5", "4-7"],
+    category: "praktyka",
+  },
 ];
 
 export const getTermsByCategory = (category: GlossaryTerm["category"]) => {

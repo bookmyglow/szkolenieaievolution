@@ -62,10 +62,10 @@ const Header = () => {
             Słownik
           </Link>
           <Link
-            to="/zasoby"
+            to="/narzedzia"
             className="text-muted-foreground hover:text-foreground transition-colors font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
           >
-            Zasoby
+            Narzędzia AI
           </Link>
         </nav>
 
@@ -165,11 +165,11 @@ const Header = () => {
               Słownik
             </Link>
             <Link
-              to="/zasoby"
+              to="/narzedzia"
               className="text-foreground font-medium py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Zasoby
+              Narzędzia AI
             </Link>
 
             {/* Mobile theme toggle */}

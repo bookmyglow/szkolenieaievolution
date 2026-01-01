@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { resources, getResourcesByCategory, searchResources, Resource } from "@/data/resources";
-import { Search, ExternalLink, Bot, Palette, Video, Book, Users, Wrench, Star } from "lucide-react";
+import { Search, ExternalLink, Bot, Palette, Video, Book, Users, Wrench, Star, Sparkles } from "lucide-react";
 import AIChatbot from "@/components/chat/AIChatbot";
 import SEO from "@/components/seo/SEO";
 
@@ -51,15 +51,15 @@ const ResourcesPage = () => {
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Star className="w-4 h-4" />
-              <span>Zasoby</span>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/15 to-accent/15 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 border border-border/60">
+              <Sparkles className="w-4 h-4" />
+              <span>Narzędzia AI</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Przydatne <span className="text-gradient-accent">zasoby</span>
+              Przydatne <span className="text-gradient-accent">narzędzia AI</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Narzędzia, kursy i społeczności, które pomogą Ci w nauce AI
+              Narzędzia, kursy i społeczności, które pomogą Ci w nauce i wdrażaniu AI na co dzień
             </p>
 
             {/* Search */}

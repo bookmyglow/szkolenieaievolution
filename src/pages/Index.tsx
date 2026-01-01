@@ -8,6 +8,7 @@ import CertificateSection from "@/components/sections/CertificateSection";
 import ModulesSection from "@/components/sections/ModulesSection";
 import DiscoverSection from "@/components/sections/DiscoverSection";
 import CommunitySection from "@/components/sections/CommunitySection";
+import AboutAIEvolutionSection from "@/components/sections/AboutAIEvolutionSection";
 import AIChatbot from "@/components/chat/AIChatbot";
 import SEO from "@/components/seo/SEO";
 
@@ -36,21 +37,24 @@ const Index = () => {
           <WhySection />
         </div>
         <div className="bg-muted/30">
+          <AboutAIEvolutionSection />
+        </div>
+        <div className="bg-background">
           <PathSection />
         </div>
-        <div className="bg-background">
+        <div className="bg-muted/20">
           <StatsSection />
         </div>
-        <div className="bg-muted/30">
+        <div className="bg-background">
           <ModulesSection />
         </div>
-        <div className="bg-background">
+        <div className="bg-muted/20">
           <DiscoverSection />
         </div>
-        <div className="bg-muted/30">
+        <div className="bg-background">
           <CertificateSection />
         </div>
-        <div className="bg-background">
+        <div className="bg-muted/20">
           <CommunitySection />
         </div>
       </main>

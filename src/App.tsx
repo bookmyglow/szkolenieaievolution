@@ -41,6 +41,7 @@ const App = () => (
               <Route path="/modul/:moduleSlug/quiz" element={<QuizPage />} />
               <Route path="/profil" element={<ProfilePage />} />
               <Route path="/slownik" element={<GlossaryPage />} />
+              <Route path="/narzedzia" element={<ResourcesPage />} />
               <Route path="/zasoby" element={<ResourcesPage />} />
               <Route path="/certyfikat" element={<CertificatePage />} />
               <Route path="*" element={<NotFound />} />

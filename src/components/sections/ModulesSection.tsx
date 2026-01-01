@@ -65,7 +65,7 @@ const ModulesSection = () => {
           </div>
 
           {/* Header */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left bg-card/70 border border-border/70 rounded-3xl p-6 shadow-sm">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/15 to-cyan/15 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4 md:mb-6 border border-primary/20">
               <BookOpen className="w-4 h-4" />
               <span>Moduły edukacyjne</span>
@@ -74,12 +74,12 @@ const ModulesSection = () => {
               Ucz się w swoim{" "}
               <span className="text-gradient-primary">tempie</span>
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-4">
+            <p className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed">
               Każdy moduł to interaktywna lekcja z quizami i praktycznymi przykładami.
               Zacznij od podstaw lub wybierz temat, który Cię interesuje.
             </p>
-            <p className="text-sm md:text-base text-muted-foreground">
-              Nasza ścieżka nauki prowadzi od podstaw AI, przez modele językowe i generowanie obrazów, 
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              Nasza ścieżka nauki prowadzi od podstaw AI, przez modele językowe i generowanie obrazów,
               aż po etykę AI i zaawansowany prompt engineering.
             </p>
           </div>
