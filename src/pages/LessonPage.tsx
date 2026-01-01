@@ -42,6 +42,28 @@ const renderContent = (content: string) => {
       return;
     }
 
+    // Images
+    const imageMatch = line.match(/!\[(.*?)]\((.*?)\)/);
+    if (imageMatch) {
+      const [, alt, src] = imageMatch;
+      elements.push(
+        <figure key={`img-${index}`} className="my-6 overflow-hidden rounded-2xl bg-muted/50 border border-border/50">
+          <img
+            src={src}
+            alt={cleanText(alt) || "Ilustracja do lekcji"}
+            loading="lazy"
+            className="w-full h-auto object-cover"
+          />
+          {alt && (
+            <figcaption className="p-4 text-sm text-muted-foreground bg-muted/60">
+              {cleanText(alt)}
+            </figcaption>
+          )}
+        </figure>
+      );
+      return;
+    }
+
     // Tables
     if (line.startsWith('|')) {
       if (!inTable) {

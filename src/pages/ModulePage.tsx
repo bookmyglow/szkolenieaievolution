@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { getModuleBySlug } from "@/data/modules";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, BookOpen, Brain, Clock, Image, MessageSquare, Trophy, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Brain, Clock, Image, MessageSquare, Palette, Scale, Trophy, Wand2, Zap } from "lucide-react";
 import LessonCard from "@/components/learning/LessonCard";
 import ProgressTracker from "@/components/learning/ProgressTracker";
 import Header from "@/components/layout/Header";
@@ -14,6 +14,9 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   MessageSquare,
   Image,
   Zap,
+  Scale,
+  Palette,
+  Wand2,
 };
 
 const ModulePage = () => {
@@ -82,7 +85,7 @@ const ModulePage = () => {
                 <Icon className="w-10 h-10" />
               </div>
 
-              <div className="flex-1">
+              <div className="flex-1 space-y-4">
                 <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
                   <div className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
@@ -103,6 +106,27 @@ const ModulePage = () => {
                   color={module.color}
                 />
               </div>
+
+              {module.heroImage && (
+                <div className="w-full md:w-1/3 lg:w-2/5 rounded-3xl overflow-hidden shadow-xl border border-border/60 bg-gradient-to-br from-primary/10 via-background to-accent/10">
+                  <div className="relative">
+                    <img
+                      src={module.heroImage.src}
+                      alt={module.heroImage.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent" aria-hidden="true" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/90">
+                      <div className="px-3 py-2 rounded-full bg-black/50 backdrop-blur-sm">Inspiracja wizualna</div>
+                      <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-black/50 backdrop-blur-sm">
+                        <Image className="w-4 h-4" />
+                        Multimodalny przepływ pracy
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -186,6 +210,46 @@ const ModulePage = () => {
             </div>
           </div>
         </section>
+
+        {module.gallery && module.gallery.length > 0 && (
+          <section className="container mx-auto px-6 pb-6">
+            <div className="bg-gradient-to-r from-primary/10 via-background to-accent/10 border border-border/60 rounded-3xl p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+                  <Image className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Inspiracje wizualne modułu</p>
+                  <h2 className="text-xl font-semibold">Galeria referencji i scen</h2>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-3 gap-4">
+                {module.gallery.map((item, index) => (
+                  <figure
+                    key={index}
+                    className="group overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm"
+                  >
+                    <div className="relative">
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        loading="lazy"
+                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70 group-hover:opacity-80 transition-opacity" aria-hidden="true" />
+                    </div>
+                    {(item.alt || item.caption) && (
+                      <figcaption className="p-4 space-y-1">
+                        <p className="text-sm font-medium text-foreground">{item.alt}</p>
+                        {item.caption && <p className="text-xs text-muted-foreground">{item.caption}</p>}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <Footer />
