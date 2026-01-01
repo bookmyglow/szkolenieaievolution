@@ -24,6 +24,15 @@ export interface Module {
   duration: string;
   lessonsCount: number;
   color: "primary" | "accent";
+  heroImage?: {
+    src: string;
+    alt: string;
+  };
+  gallery?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  }[];
   lessons: Lesson[];
   quiz: QuizQuestion[];
 }
@@ -4062,6 +4071,255 @@ Stwórz własną bibliotekę promptów w Notion lub Obsidian!
         options: ["Dla zabawy", "Oszczędza czas i zapewnia spójność", "Bo tak każą", "Nie warto"],
         correctIndex: 1,
         explanation: "Biblioteka promptów oszczędza czas i zapewnia spójne, wysokiej jakości wyniki."
+      }
+    ]
+  },
+  {
+    id: 8,
+    slug: "multimodalne-ai",
+    title: "Multimodalne AI w praktyce",
+    description: "Projektuj generatywne workflow łączące tekst, obraz, wideo i audio w prawdziwych projektach.",
+    icon: "Image",
+    duration: "70 min",
+    lessonsCount: 5,
+    color: "accent",
+    heroImage: {
+      src: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1400&q=80",
+      alt: "Zespół planujący multimodalny projekt AI na tablicy koncepcyjnej",
+    },
+    gallery: [
+      {
+        src: "https://images.unsplash.com/photo-1529333166433-0000c8f7e8c8?auto=format&fit=crop&w=1400&q=80",
+        alt: "Moodboard z kolorowymi szkicami dla systemu generowania obrazów",
+        caption: "Moodboard pomaga precyzyjnie zdefiniować styl przed generowaniem obrazów."
+      },
+      {
+        src: "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=80",
+        alt: "Osoba edytująca klatki wideo na laptopie",
+        caption: "Storyboarding i krótkie klipy referencyjne skracają czas iteracji modeli wideo."
+      },
+      {
+        src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1400&q=80",
+        alt: "Mikrofon studyjny podczas nagrywania narracji",
+        caption: "Dobrze przygotowany dźwięk referencyjny poprawia jakość syntetycznego voice-overu."
+      }
+    ],
+    lessons: [
+      {
+        id: "8-1",
+        title: "Mapa pracy z multimodalną AI",
+        duration: "14 min",
+        content: `
+# Dlaczego multimodalna AI zmienia pracę zespołów
+
+Modele multimodalne (łączące tekst, obraz, wideo i audio) pozwalają przejść od briefu do prototypu w ciągu godzin zamiast tygodni.
+
+![Zespół planujący przepływ pracy z AI](https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80)
+
+## Uniwersalny przepływ pracy
+1. **Brief i referencje** – definicja celu, grupy odbiorców, stylu, ograniczeń prawnych.
+2. **Szkice niskiej wierności** – tekstowe opisy i szybkie miniatury (np. szkice w Figmie lub markerem na papierze).
+3. **Iteracje modelu** – generacje w małej rozdzielczości, porównanie kilku wersji i wybór najlepszego wariantu.
+4. **Produkcja wysokiej jakości** – upscale, poprawki ręczne, dodanie dźwięku/lektora, eksport do docelowego formatu.
+
+## Kluczowe decyzje projektowe
+- Jakie dane referencyjne są dostępne (zdjęcia, storyboard, sample audio)?
+- Czy potrzebujemy spójności między scenami (postacie, kolorystyka, typografia)?
+- Jak będziemy wersjonować prompt i pliki (Notion, Git, foldery w chmurze)?
+
+## Przykład workflow "90 minut do prototypu"
+- 15 min – zebranie briefu i przykładowych kadrów od klienta.
+- 30 min – wygenerowanie 12 miniatur referencyjnych (tekst → obraz) i wybór top 3.
+- 30 min – storyboard 6 scen + krótkie klipy referencyjne (obraz → wideo).
+- 15 min – syntetyczny lektor + miks podstawowy.
+        `,
+        keyPoints: [
+          "Multimodalne modele skracają czas od briefu do prototypu",
+          "Workflow zaczyna się od referencji i szybkich szkiców",
+          "Wersjonowanie promptów i plików pozwala uniknąć chaosu"
+        ],
+        funFact: "Demo GPT-4o pokazało dialog w czasie rzeczywistym z analizą obrazu i dźwięku, co przyspiesza iteracje nad storyboardami."
+      },
+      {
+        id: "8-2",
+        title: "Tekst → obraz: spójne style i kompozycje",
+        duration: "12 min",
+        content: `
+# Jak prowadzić modele tekst→obraz
+
+Stabilne kadry wymagają jasnych instrukcji dotyczących perspektywy, oświetlenia i stylu.
+
+![Moodboard stylu i kolorystyki](https://images.unsplash.com/photo-1529333166433-0000c8f7e8c8?auto=format&fit=crop&w=1200&q=80)
+
+## Wzór promptu dla spójnego stylu
+1. **Temat** – kto/co jest głównym obiektem.
+2. **Kadr i perspektywa** – plan amerykański, ujęcie z góry, macro itp.
+3. **Światło** – soft light, golden hour, neon, film noir.
+4. **Paleta i tekstury** – pastelowe kolory, ziarnistość filmu 35mm, matowy metal.
+5. **Sprzęt lub technika** – "shot on 50mm", "isometric illustration", "vector art".
+
+## Praktyczne ustawienia
+- Modele: Midjourney/FLUX (styl), Stable Diffusion (kontrola i lokalne uruchomienie).
+- Narzędzia kontroli: ControlNet/Guidance dla spójnych póz i layoutu.
+- Upscaling: 2x–4x, delikatne odszumianie, korekcja skóry/tekstu w edytorze graficznym.
+
+## Czego unikać
+- Zbyt ogólnych promptów bez kontekstu.
+- Sprzecznych instrukcji ("noc" + "pełne słońce").
+- Braku referencji wizualnych – nawet szkic na kartce poprawia wynik.
+        `,
+        keyPoints: [
+          "Spójny prompt opisuje temat, kadr, światło, paletę i technikę",
+          "ControlNet lub podobne narzędzia utrzymują układ i pozę",
+          "Referencje wizualne zmniejszają liczbę nieudanych generacji"
+        ],
+        funFact: "Modele tekst→obraz najlepiej radzą sobie z klarownymi instrukcjami dotyczącymi oświetlenia i kompozycji."
+      },
+      {
+        id: "8-3",
+        title: "Obraz → wideo i generowanie ujęć",
+        duration: "14 min",
+        content: `
+# Przechodzenie z obrazu do ruchu
+
+Narzędzia takie jak Runway Gen-3, Pika lub Luma pozwalają animować statyczne kadry.
+
+![Storyboard do animacji wideo](https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80)
+
+## Krok po kroku
+1. Wybierz 6–8 kluczowych kadrów z moodboardu.
+2. Dodaj krótkie opisy ruchu: "delikatny ruch kamery w prawo", "dronowy najazd".
+3. Generuj klipy 4–8 sekund, zapisuj metadane promptu do każdego ujęcia.
+4. Łącz klipy w edytorze (CapCut, Premiere) i wyrównaj kolorystykę LUT-em.
+
+## Dobre praktyki
+- Używaj referencyjnych klipów (video-to-video) dla realizmu ruchu.
+- Generuj dźwięk tła osobno, aby uniknąć artefaktów w eksporcie.
+- Sprawdzaj licencje narzędzi – komercyjne użycie może wymagać planu pro.
+
+## Minimalny setup techniczny
+- GPU z co najmniej 8 GB VRAM, jeśli korzystasz z lokalnych modeli.
+- Stabilne łącze do uploadu referencji, gdy pracujesz w chmurze.
+        `,
+        keyPoints: [
+          "Storyboard i krótkie opisy ruchu prowadzą modele wideo",
+          "Lepsze efekty daje video-to-video z referencyjnym klipem",
+          "Parametry eksportu i licencje trzeba sprawdzić przed publikacją"
+        ],
+        funFact: "Runway opublikował pierwszą wersję Gen-3 skierowaną do twórców w 2024 roku, poprawiając stabilność ruchu względem Gen-2."
+      },
+      {
+        id: "8-4",
+        title: "Audio, dubbing i synchronizacja ust",
+        duration: "12 min",
+        content: `
+# Jak przygotować syntetyczny głos
+
+Systemy takie jak ElevenLabs, PlayHT czy Azure AI potrafią klonować głos na podstawie kilku minut nagrań (z zachowaniem zgody osoby nagranej).
+
+## Checklist przed nagraniem referencyjnym
+- 5–10 minut czystego audio bez szumu tła.
+- Różne emocje i tempo mowy, aby model odwzorował intonację.
+- Jasne oświadczenie o zgodzie na użycie głosu.
+
+## Synchronizacja ust
+- Narzędzia: HeyGen, Pika lip-sync, D-ID (dla awatarów mówiących).
+- Lepiej działa, gdy dostarczysz czysty master audio i spójny framerate wideo.
+- Unikaj nadmiernej kompresji – artefakty utrudniają dopasowanie ruchu ust.
+
+## Najczęstsze problemy
+- **Przydźwięk i echo** – nagrywaj w pomieszczeniu z wygłuszeniem.
+- **Niespójny akcent** – dodaj w promptach: "neutralna polszczyzna" lub "lekki akcent brytyjski".
+- **Opóźnienie audio** – dopasuj klatkaż i eksportuj w 24/25/30 fps zgodnie z materiałem źródłowym.
+        `,
+        keyPoints: [
+          "Klonowanie głosu wymaga zgody i dobrej jakości nagrań",
+          "Synchronizacja ust działa lepiej z czystym master audio",
+          "Drobne ustawienia (fps, kompresja) wpływają na finalną jakość"
+        ],
+        funFact: "Modele do syntezy mowy zazwyczaj potrzebują kilku minut audio, aby odtworzyć barwę i intonację mówiącego."
+      },
+      {
+        id: "8-5",
+        title: "Ocena jakości, bezpieczeństwo i prawa autorskie",
+        duration: "18 min",
+        content: `
+# Jak ocenić wynik i pozostać fair
+
+W multimodalnych projektach liczy się nie tylko efekt wizualny, ale też zgodność z prawem i etyką.
+
+## Checklista jakości
+- Czy obraz/wideo jest ostre i pozbawione artefaktów? (brak dodatkowych palców, brak glitchy)
+- Czy styl jest spójny między scenami i zgodny z briefem?
+- Czy teksty/napisy są czytelne i bez błędów?
+
+## Bezpieczeństwo i zgodność
+- Korzystaj z własnych lub licencjonowanych referencji (CC, stock, materiały klienta).
+- Włącz filtry bezpieczeństwa modeli, gdy generujesz wizerunki osób.
+- Przechowuj log zmian (prompty, ustawienia) – ułatwia to audyt i obronę praw autorskich.
+
+## Praktyczne zasady prawne
+- W UE obowiązuje prawo autorskie do elementów twórczych – jeśli korzystasz z cudzych materiałów, upewnij się, że masz licencję.
+- Regulacje AI Act wymagają oznaczania treści syntetycznych w określonych kontekstach (np. deepfake osób publicznych).
+- W projektach komercyjnych zapisuj w umowach, jakie modele i źródła danych zostały użyte.
+        `,
+        keyPoints: [
+          "Jakość oceniamy po spójności stylu i braku artefaktów",
+          "Licencje i filtry bezpieczeństwa chronią przed ryzykiem prawnym",
+          "Logowanie promptów ułatwia audyt i zgodność z AI Act"
+        ],
+        funFact: "AI Act UE przewiduje oznaczanie syntetycznych treści w sytuacjach mogących wprowadzać odbiorcę w błąd, np. deepfake znanych osób."
+      }
+    ],
+    quiz: [
+      {
+        id: "q8-1",
+        question: "Jaki jest pierwszy krok w workflow multimodalnym?",
+        options: ["Upscaling", "Brief i referencje", "Dodawanie filtrów", "Korekcja barw"],
+        correctIndex: 1,
+        explanation: "Workflow zaczyna się od briefu i zebrania referencji wizualnych/dźwiękowych."
+      },
+      {
+        id: "q8-2",
+        question: "Co pomaga utrzymać spójny układ postaci lub obiektów?",
+        options: ["Losowe prompty", "ControlNet lub podobne narzędzia prowadzące kompozycję", "Brak referencji", "Przypadkowe style"],
+        correctIndex: 1,
+        explanation: "ControlNet i pokrewne narzędzia pozwalają zachować kompozycję i pozę między generacjami."
+      },
+      {
+        id: "q8-3",
+        question: "Dlaczego zapis promptów i ustawień wideo jest ważny?",
+        options: ["Aby zajmowały więcej miejsca", "Ułatwia reprodukcję i audyt projektu", "Nie ma znaczenia", "Służy tylko do testów"],
+        correctIndex: 1,
+        explanation: "Logowanie promptów i parametrów ułatwia ponowne wygenerowanie klipów i pokazuje, jak powstał materiał."
+      },
+      {
+        id: "q8-4",
+        question: "Jakie źródła audio należy użyć do klonowania głosu?",
+        options: ["Nagrania bez zgody", "Nagrania z wyraźną zgodą i dobrą jakością", "Dowolne klipy z internetu", "Stare nagrania telefoniczne"],
+        correctIndex: 1,
+        explanation: "Klonowanie głosu wymaga zgody osoby nagranej i czystych technicznie próbek audio."
+      },
+      {
+        id: "q8-5",
+        question: "Co należy sprawdzić przed komercyjnym użyciem modeli wideo?",
+        options: ["Nic, można używać dowolnie", "Warunki licencji narzędzia", "Tylko rozdzielczość", "Tylko kolorystykę"],
+        correctIndex: 1,
+        explanation: "Licencje modeli wideo często różnią się w zależności od planu – trzeba je potwierdzić przed publikacją."
+      },
+      {
+        id: "q8-6",
+        question: "Jak poprawić synchronizację ust w awatarze?",
+        options: ["Dodać szum do audio", "Użyć czystego master audio i dobranego fps", "Zrezygnować z lektora", "Kompresować wideo maksymalnie"],
+        correctIndex: 1,
+        explanation: "Czyste audio i zgodny klatkaż poprawiają działanie narzędzi lip-sync."
+      },
+      {
+        id: "q8-7",
+        question: "Co jest elementem checklisty jakości generatywnego wideo?",
+        options: ["Czy materiał jest wystarczająco ziarnisty", "Spójność stylu i brak artefaktów w klatkach", "Czy kolory są losowe", "Brak metadanych"],
+        correctIndex: 1,
+        explanation: "Spójność stylu oraz brak artefaktów i glitchy to kluczowe kryteria oceny jakości."
       }
     ]
   }

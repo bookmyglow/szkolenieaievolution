@@ -6,15 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { glossaryTerms, getTermsByCategory, searchTerms, GlossaryTerm } from "@/data/glossary";
+import { modules } from "@/data/modules";
 import { Search, BookOpen, ArrowRight } from "lucide-react";
 import AIChatbot from "@/components/chat/AIChatbot";
+import SEO from "@/components/seo/SEO";
 
-const categories = [
-  { id: "all", name: "Wszystkie", count: glossaryTerms.length },
-  { id: "podstawy", name: "Podstawy AI", count: getTermsByCategory("podstawy").length },
-  { id: "modele", name: "Modele językowe", count: getTermsByCategory("modele").length },
-  { id: "obrazy", name: "AI i obrazy", count: getTermsByCategory("obrazy").length },
-  { id: "praktyka", name: "AI w praktyce", count: getTermsByCategory("praktyka").length },
+const categoryConfig = [
+  { id: "all", name: "Wszystkie" },
+  { id: "podstawy", name: "Podstawy AI" },
+  { id: "modele", name: "Modele językowe" },
+  { id: "obrazy", name: "AI i obrazy" },
+  { id: "praktyka", name: "AI w praktyce" },
 ];
 
 const GlossaryPage = () => {
@@ -36,8 +38,12 @@ const GlossaryPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Słownik AI | AI Evolution Polska"
+        description="Poznaj najważniejsze pojęcia ze świata sztucznej inteligencji w słowniku AI Evolution Polska."
+      />
       <Header />
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -67,20 +73,23 @@ const GlossaryPage = () => {
 
           {/* Categories */}
           <div className="flex flex-wrap gap-2 justify-center mb-8">
-            {categories.map(category => (
-              <Button
-                key={category.id}
-                variant={activeCategory === category.id ? "default" : "outline"}
-                size="sm"
-                onClick={() => {
-                  setActiveCategory(category.id);
-                  setSearchQuery("");
-                }}
-              >
-                {category.name}
-                <span className="ml-1 text-xs opacity-70">({category.count})</span>
-              </Button>
-            ))}
+            {categoryConfig.map(category => {
+              const count = category.id === "all" ? glossaryTerms.length : getTermsByCategory(category.id as GlossaryTerm["category"]).length;
+              return (
+                <Button
+                  key={category.id}
+                  variant={activeCategory === category.id ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => {
+                    setActiveCategory(category.id);
+                    setSearchQuery("");
+                  }}
+                >
+                  {category.name}
+                  <span className="ml-1 text-xs opacity-70">({count})</span>
+                </Button>
+              );
+            })}
           </div>
 
           {/* Terms Grid */}
@@ -96,9 +105,9 @@ const GlossaryPage = () => {
                     <CardHeader className="pb-2">
                       <CardTitle className="text-lg flex items-center justify-between">
                         <span>{term.term}</span>
-                        <span className="text-xs font-normal px-2 py-1 bg-muted rounded-full text-muted-foreground">
-                          {categories.find(c => c.id === term.category)?.name}
-                        </span>
+                          <span className="text-xs font-normal px-2 py-1 bg-muted rounded-full text-muted-foreground">
+                            {categoryConfig.find(c => c.id === term.category)?.name}
+                          </span>
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -112,7 +121,7 @@ const GlossaryPage = () => {
                             return (
                               <Link
                                 key={lessonId}
-                                to={`/modul/${getModuleSlugByNumber(parseInt(moduleNum))}/lekcja/${lessonId}`}
+                                to={`/modul/${getModuleSlugByNumber(parseInt(moduleNum, 10))}/lekcja/${lessonId}`}
                                 className="text-primary hover:underline"
                               >
                                 Lekcja {lessonId.replace("-", ".")}
@@ -144,8 +153,8 @@ const GlossaryPage = () => {
 
 // Helper function to get module slug by number
 const getModuleSlugByNumber = (num: number): string => {
-  const slugs = ["czym-jest-ai", "modele-jezykowe", "ai-i-obrazy", "ai-w-praktyce"];
-  return slugs[num - 1] || slugs[0];
+  const found = modules.find(module => module.id === num);
+  return found?.slug ?? modules[0].slug;
 };
 
 export default GlossaryPage;

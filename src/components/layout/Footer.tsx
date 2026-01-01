@@ -18,10 +18,11 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="md:col-span-1 space-y-4">
             <Link to="/" className="inline-block">
-              <img 
-                src={logo} 
-                alt="AI Evolution Polska" 
+              <img
+                src={logo}
+                alt="AI Evolution Polska"
                 className="h-12 w-auto object-contain"
+                loading="lazy"
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -39,8 +40,8 @@ const Footer = () => {
               <Link to="/slownik" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                 Słownik AI
               </Link>
-              <Link to="/zasoby" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-                Zasoby dodatkowe
+              <Link to="/narzedzia" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                Narzędzia AI
               </Link>
               <Link to="/profil" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                 Twój profil
@@ -50,7 +51,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Zasoby</h4>
+            <h4 className="font-semibold text-foreground">Narzędzia i społeczność</h4>
             <nav className="flex flex-col gap-2">
               <a href="#" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                 Blog o AI

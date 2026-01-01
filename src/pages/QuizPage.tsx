@@ -12,6 +12,7 @@ import { useProgress } from "@/context/ProgressContext";
 import { useAchievementChecker } from "@/hooks/useAchievementChecker";
 import { toast } from "@/hooks/use-toast";
 import confetti from 'canvas-confetti';
+import SEO from "@/components/seo/SEO";
 
 const QuizPage = () => {
   const { moduleSlug } = useParams<{ moduleSlug: string }>();
@@ -122,9 +123,20 @@ const QuizPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`Quiz: ${module.title} | AI Evolution Polska`}
+        description={`Sprawdź swoją wiedzę z modułu ${module.title} w quizie z ${module.quiz.length} pytaniami.`}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Quiz",
+          about: module.title,
+          numberOfQuestions: module.quiz.length,
+          name: `Quiz modułu ${module.title}`,
+        }}
+      />
       <Header />
 
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <div className="container mx-auto px-6 py-12">
           <div className="max-w-2xl mx-auto">
             {/* Header */}

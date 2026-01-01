@@ -8,6 +8,7 @@ import { useProgress } from "@/context/ProgressContext";
 import { modules } from "@/data/modules";
 import { Brain, MessageSquare, Image, Zap, ArrowRight, Clock, BookOpen, CheckCircle2, Filter, Scale, Palette, Wand2 } from "lucide-react";
 import AIChatbot from "@/components/chat/AIChatbot";
+import SEO from "@/components/seo/SEO";
 
 const iconMap = {
   Brain,
@@ -46,8 +47,12 @@ const AllModulesPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Wszystkie moduły | AI Evolution Polska"
+        description="Przeglądaj moduły kursu AI Evolution Polska, śledź postępy i wybierz kolejny temat do nauki."
+      />
       <Header />
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-12">
