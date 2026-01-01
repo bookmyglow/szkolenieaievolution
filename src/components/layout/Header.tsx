@@ -27,6 +27,9 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <a href="#main-content" className="skip-link">
+        Przejdź do treści głównej
+      </a>
       {/* Progress bar */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-muted/50">
         <div
@@ -41,6 +44,7 @@ const Header = () => {
             src={logo}
             alt="AI Evolution Polska"
             className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            loading="lazy"
           />
         </Link>
 
@@ -113,6 +117,9 @@ const Header = () => {
             size="icon"
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="primary-navigation"
+            aria-label={mobileMenuOpen ? "Zamknij menu" : "Otwórz menu"}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
@@ -121,7 +128,10 @@ const Header = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
+        <div
+          id="primary-navigation"
+          className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in"
+        >
           <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
             {/* Mobile progress */}
             <div className="flex items-center justify-between py-2 border-b border-border/50">

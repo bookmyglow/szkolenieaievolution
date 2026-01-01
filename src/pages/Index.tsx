@@ -9,12 +9,28 @@ import ModulesSection from "@/components/sections/ModulesSection";
 import DiscoverSection from "@/components/sections/DiscoverSection";
 import CommunitySection from "@/components/sections/CommunitySection";
 import AIChatbot from "@/components/chat/AIChatbot";
+import SEO from "@/components/seo/SEO";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="AI Evolution Polska | Nauka sztucznej inteligencji"
+        description="Platforma AI Evolution Polska to ścieżka nauki AI z lekcjami, quizami i certyfikatem. Ucz się w swoim tempie i śledź postępy."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Course",
+          name: "AI Evolution Polska - ścieżka nauki AI",
+          description:
+            "Program edukacyjny obejmujący moduły, lekcje i quizy pomagające zrozumieć sztuczną inteligencję w praktyce.",
+          provider: {
+            "@type": "Organization",
+            name: "AI Evolution Polska",
+          },
+        }}
+      />
       <Header />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <div className="bg-background">
           <WhySection />

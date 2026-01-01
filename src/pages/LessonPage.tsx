@@ -11,6 +11,7 @@ import { useAchievementChecker } from "@/hooks/useAchievementChecker";
 import { toast } from "@/hooks/use-toast";
 import confetti from "canvas-confetti";
 import { useState } from "react";
+import SEO from "@/components/seo/SEO";
 
 // Helper function to render markdown content
 const renderContent = (content: string) => {
@@ -38,6 +39,28 @@ const renderContent = (content: string) => {
 
     if (inCodeBlock) {
       codeContent.push(line);
+      return;
+    }
+
+    // Images
+    const imageMatch = line.match(/!\[(.*?)]\((.*?)\)/);
+    if (imageMatch) {
+      const [, alt, src] = imageMatch;
+      elements.push(
+        <figure key={`img-${index}`} className="my-6 overflow-hidden rounded-2xl bg-muted/50 border border-border/50">
+          <img
+            src={src}
+            alt={cleanText(alt) || "Ilustracja do lekcji"}
+            loading="lazy"
+            className="w-full h-auto object-cover"
+          />
+          {alt && (
+            <figcaption className="p-4 text-sm text-muted-foreground bg-muted/60">
+              {cleanText(alt)}
+            </figcaption>
+          )}
+        </figure>
+      );
       return;
     }
 
@@ -206,6 +229,21 @@ const LessonPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`${lesson.title} | ${module.title} | AI Evolution Polska`}
+        description={lesson.summary}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: lesson.title,
+          description: lesson.summary,
+          about: module.title,
+          author: {
+            "@type": "Organization",
+            name: "AI Evolution Polska",
+          },
+        }}
+      />
       <Header />
 
       {/* Floating Navigation */}
@@ -326,7 +364,7 @@ const LessonPage = () => {
         </div>
       )}
 
-      <main className="pt-24 pb-32">
+      <main id="main-content" className="pt-24 pb-32">
         {/* Top Bar */}
         <div className="border-b bg-background/80 backdrop-blur-sm sticky top-16 z-40">
           <div className="container mx-auto px-6 py-3">

@@ -12,6 +12,7 @@ import CertificatePreview from "@/components/certificate/CertificatePreview";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { toast } from "sonner";
+import SEO from "@/components/seo/SEO";
 
 const CertificatePage = () => {
   const navigate = useNavigate();
@@ -95,9 +96,13 @@ const CertificatePage = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="Certyfikat ukończenia | AI Evolution Polska"
+        description="Wygeneruj certyfikat ukończenia kursu AI Evolution Polska i zapisz go jako PDF."
+      />
       <Header />
-      
-      <main className="flex-1 py-12">
+
+      <main id="main-content" className="flex-1 py-12">
         <div className="container mx-auto px-6">
           {/* Back button */}
           <Button 

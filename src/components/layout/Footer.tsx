@@ -18,10 +18,11 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="md:col-span-1 space-y-4">
             <Link to="/" className="inline-block">
-              <img 
-                src={logo} 
-                alt="AI Evolution Polska" 
+              <img
+                src={logo}
+                alt="AI Evolution Polska"
                 className="h-12 w-auto object-contain"
+                loading="lazy"
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
