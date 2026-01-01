@@ -43,8 +43,8 @@ const ResourcesPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Narzędzia AI | AI Evolution Polska"
-        description="Starannie wyselekcjonowane narzędzia AI, kursy i społeczności, które pomogą Ci szybciej budować nowoczesne rozwiązania."
+        title="Zasoby AI | AI Evolution Polska"
+        description="Zestaw rekomendowanych narzędzi, kursów i społeczności AI przygotowany przez AI Evolution Polska."
       />
       <Header />
       <main id="main-content" className="pt-24 pb-16">

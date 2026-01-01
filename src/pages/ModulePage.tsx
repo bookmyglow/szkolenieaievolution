@@ -75,16 +75,21 @@ const ModulePage = () => {
               Powrót do modułów
             </Link>
 
-            <div className="grid md:grid-cols-[1.4fr,1fr] gap-6 items-start">
-              <div className="p-6 md:p-8 rounded-3xl border border-border/70 bg-card/80 shadow-lg backdrop-blur-sm space-y-6">
-                <div className="flex items-center gap-4">
-                  <div
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${module.color === 'primary'
-                        ? 'bg-primary/10 text-primary'
-                        : 'bg-accent/10 text-accent'
-                      }`}
-                  >
-                    <Icon className="w-9 h-9" />
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div
+                className={`w-20 h-20 rounded-3xl flex items-center justify-center shrink-0 ${module.color === 'primary'
+                    ? 'bg-primary/10 text-primary'
+                    : 'bg-accent/10 text-accent'
+                  }`}
+              >
+                <Icon className="w-10 h-10" />
+              </div>
+
+              <div className="flex-1 space-y-4">
+                <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    {module.duration}
                   </div>
                   <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/60 border border-border/70">
@@ -113,9 +118,8 @@ const ModulePage = () => {
               </div>
 
               {module.heroImage && (
-                <div className="relative rounded-3xl overflow-hidden shadow-xl border border-border/70 bg-gradient-to-br from-primary/10 via-background to-accent/10">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-primary/15 via-transparent to-accent/15 blur-xl" aria-hidden="true" />
-                  <div className="relative rounded-3xl overflow-hidden">
+                <div className="w-full md:w-1/3 lg:w-2/5 rounded-3xl overflow-hidden shadow-xl border border-border/60 bg-gradient-to-br from-primary/10 via-background to-accent/10">
+                  <div className="relative">
                     <img
                       src={module.heroImage.src}
                       alt={module.heroImage.alt}
