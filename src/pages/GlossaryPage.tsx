@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { glossaryTerms, getTermsByCategory, searchTerms, GlossaryTerm } from "@/data/glossary";
 import { Search, BookOpen, ArrowRight } from "lucide-react";
 import AIChatbot from "@/components/chat/AIChatbot";
+import SEO from "@/components/seo/SEO";
 
 const categories = [
   { id: "all", name: "Wszystkie", count: glossaryTerms.length },
@@ -36,8 +37,12 @@ const GlossaryPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Słownik AI | AI Evolution Polska"
+        description="Poznaj najważniejsze pojęcia ze świata sztucznej inteligencji w słowniku AI Evolution Polska."
+      />
       <Header />
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-12">

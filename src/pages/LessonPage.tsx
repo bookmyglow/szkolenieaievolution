@@ -11,6 +11,7 @@ import { useAchievementChecker } from "@/hooks/useAchievementChecker";
 import { toast } from "@/hooks/use-toast";
 import confetti from "canvas-confetti";
 import { useState } from "react";
+import SEO from "@/components/seo/SEO";
 
 // Helper function to render markdown content
 const renderContent = (content: string) => {
@@ -206,6 +207,21 @@ const LessonPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`${lesson.title} | ${module.title} | AI Evolution Polska`}
+        description={lesson.summary}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: lesson.title,
+          description: lesson.summary,
+          about: module.title,
+          author: {
+            "@type": "Organization",
+            name: "AI Evolution Polska",
+          },
+        }}
+      />
       <Header />
 
       {/* Floating Navigation */}
@@ -326,7 +342,7 @@ const LessonPage = () => {
         </div>
       )}
 
-      <main className="pt-24 pb-32">
+      <main id="main-content" className="pt-24 pb-32">
         {/* Top Bar */}
         <div className="border-b bg-background/80 backdrop-blur-sm sticky top-16 z-40">
           <div className="container mx-auto px-6 py-3">

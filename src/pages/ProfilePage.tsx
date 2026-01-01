@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Trophy, Target, ArrowRight, CheckCircle2 } from "lucide-react";
 import AIChatbot from "@/components/chat/AIChatbot";
+import SEO from "@/components/seo/SEO";
 
 const ProfilePage = () => {
   const { 
@@ -37,8 +38,12 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Twój profil | AI Evolution Polska"
+        description="Sprawdź swoje osiągnięcia, punkty i postępy w kursie AI Evolution Polska."
+      />
       <Header />
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="max-w-4xl mx-auto mb-12">
