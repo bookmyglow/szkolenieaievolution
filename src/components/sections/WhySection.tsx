@@ -89,10 +89,12 @@ const WhySection = () => {
           </div>
           <div className="order-1 lg:order-2 relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-              <img 
-                src={sectionBenefitsImage} 
-                alt="AI Learning Benefits" 
+              <img
+                src={sectionBenefitsImage}
+                alt="AI Learning Benefits"
                 className="w-full h-auto aspect-square object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">

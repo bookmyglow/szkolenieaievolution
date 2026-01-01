@@ -41,10 +41,12 @@ const ModulesSection = () => {
           {/* Image */}
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50">
-              <img 
-                src={sectionModulesImage} 
-                alt="AI Learning Path" 
+              <img
+                src={sectionModulesImage}
+                alt="AI Learning Path"
                 className="w-full h-auto aspect-[4/3] object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
             </div>

@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { resources, getResourcesByCategory, searchResources, Resource } from "@/data/resources";
 import { Search, ExternalLink, Bot, Palette, Video, Book, Users, Wrench, Star } from "lucide-react";
 import AIChatbot from "@/components/chat/AIChatbot";
+import SEO from "@/components/seo/SEO";
 
 const categoryInfo = [
   { id: "all", name: "Wszystkie", icon: Star },
@@ -41,8 +42,12 @@ const ResourcesPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Zasoby AI | AI Evolution Polska"
+        description="Zestaw rekomendowanych narzędzi, kursów i społeczności AI przygotowany przez AI Evolution Polska."
+      />
       <Header />
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         <div className="container mx-auto px-6">
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center mb-12">

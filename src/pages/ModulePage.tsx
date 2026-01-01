@@ -7,6 +7,7 @@ import LessonCard from "@/components/learning/LessonCard";
 import ProgressTracker from "@/components/learning/ProgressTracker";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEO from "@/components/seo/SEO";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Brain,
@@ -38,9 +39,28 @@ const ModulePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`${module.title} | AI Evolution Polska`}
+        description={module.description}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Course",
+          name: module.title,
+          description: module.description,
+          provider: {
+            "@type": "Organization",
+            name: "AI Evolution Polska",
+          },
+          hasCourseInstance: module.lessons.map(lesson => ({
+            "@type": "CourseInstance",
+            name: lesson.title,
+            description: lesson.keyPoints[0],
+          })),
+        }}
+      />
       <Header />
 
-      <main className="pt-24 pb-16">
+      <main id="main-content" className="pt-24 pb-16">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-muted/50 to-background pb-12">
           <div className="container mx-auto px-6">
