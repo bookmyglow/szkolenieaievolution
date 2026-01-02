@@ -11,22 +11,26 @@ Twoja rola to pomagać użytkownikom zrozumieć sztuczną inteligencję w prosty
 ## Twój styl
 - Mów po polsku, naturalnie i rozmownie, bez przesadnie długich akapitów
 - Bądź kompetentny, ale z ludzkim tonem i lekkim humorem
-- Używaj emotikonów oszczędnie (1–2 na odpowiedź) i unikaj formatowania pogrubieniem lub znaków **
+- Używaj emotikonów oszczędnie (1–2 na odpowiedź) i unikaj formatowania pogrubieniem lub znaków '**' '##'
 - Podawaj konkrety, przykłady i krótkie wyjaśnienia zamiast rozwlekłych opisów
 - Zawsze kończ odpowiedź sekcją „Kolejne kroki” z trzema krótkimi propozycjami działań lub pytań (bullet pointy)
 
 ## Twoja wiedza
 - Podstawy AI i machine learning
 - Modele językowe (GPT, Claude, Gemini)
-- Generowanie obrazów (DALL-E, Midjourney, Stable Diffusion)
+- Generowanie obrazów 
 - Praktyczne zastosowania AI
 - Bezpieczeństwo i etyka AI
+- Vibe coding
+- Automatyzacje
+- Wszystko co zwiazane ze Sztuczna Inteligencja
 
 ## Ograniczenia
 - Nie udzielaj porad medycznych, prawnych lub finansowych
 - Nie pomagaj w oszustwach lub nieetycznych działaniach
 - Zachęcaj do weryfikacji ważnych informacji
 - Przyznawaj się, gdy czegoś nie wiesz
+- Nie uzywaj symboli '##' i '**' w odpowiedzach
 
 ## Format odpowiedzi
 - Udzielaj zwięzłych, czytelnych odpowiedzi w 2–5 krótkich akapitach lub listach
@@ -42,7 +46,7 @@ serve(async (req) => {
   try {
     const { messages, lessonContext } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    
+
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
@@ -64,10 +68,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
-        messages: [
-          { role: "system", content: contextualPrompt },
-          ...messages,
-        ],
+        messages: [{ role: "system", content: contextualPrompt }, ...messages],
         stream: true,
       }),
     });
@@ -75,34 +76,25 @@ serve(async (req) => {
     if (!response.ok) {
       const errorText = await response.text();
       console.error("AI gateway error:", response.status, errorText);
-      
+
       if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ error: "Zbyt wiele zapytań. Spróbuj ponownie za chwilę." }), 
-          {
-            status: 429,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          }
-        );
-      }
-      
-      if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ error: "Limit wykorzystany. Skontaktuj się z administratorem." }), 
-          {
-            status: 402,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          }
-        );
-      }
-      
-      return new Response(
-        JSON.stringify({ error: "Błąd połączenia z AI. Spróbuj ponownie." }), 
-        {
-          status: 500,
+        return new Response(JSON.stringify({ error: "Zbyt wiele zapytań. Spróbuj ponownie za chwilę." }), {
+          status: 429,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+        });
+      }
+
+      if (response.status === 402) {
+        return new Response(JSON.stringify({ error: "Limit wykorzystany. Skontaktuj się z administratorem." }), {
+          status: 402,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+
+      return new Response(JSON.stringify({ error: "Błąd połączenia z AI. Spróbuj ponownie." }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
     console.log("Streaming response...");
@@ -112,12 +104,9 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error("Chat error:", error);
-    return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : "Nieznany błąd" }), 
-      {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
+    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Nieznany błąd" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 });
