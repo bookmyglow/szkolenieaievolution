@@ -9,6 +9,7 @@ import ModulesSection from "@/components/sections/ModulesSection";
 import DiscoverSection from "@/components/sections/DiscoverSection";
 import CommunitySection from "@/components/sections/CommunitySection";
 import AboutAIEvolutionSection from "@/components/sections/AboutAIEvolutionSection";
+import MasterclassSection from "@/components/sections/MasterclassSection";
 import AIChatbot from "@/components/chat/AIChatbot";
 import SEO from "@/components/seo/SEO";
 
@@ -39,6 +40,7 @@ const Index = () => {
         <div className="bg-muted/30">
           <AboutAIEvolutionSection />
         </div>
+        <MasterclassSection />
         <div className="bg-background">
           <PathSection />
         </div>
