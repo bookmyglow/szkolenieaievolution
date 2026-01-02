@@ -617,6 +617,137 @@
 .stagger-children > *:nth-child(6) { animation-delay: 500ms; }
 .stagger-children > *:nth-child(7) { animation-delay: 600ms; }
 .stagger-children > *:nth-child(8) { animation-delay: 700ms; }
+.stagger-children > *:nth-child(9) { animation-delay: 800ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 900ms; }
+
+/* Lesson Card Styles */
+.lesson-card {
+  @apply relative overflow-hidden transition-all duration-300;
+}
+
+.lesson-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--gradient-primary);
+  border-radius: 4px 0 0 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lesson-card:hover::before {
+  opacity: 1;
+}
+
+.lesson-card:hover {
+  transform: translateX(4px);
+}
+
+.lesson-card-completed::before {
+  background: var(--gradient-success) !important;
+  opacity: 1;
+}
+
+.lesson-card-current::before {
+  background: var(--gradient-cyan) !important;
+  opacity: 1;
+}
+
+/* Module Header Gradient */
+.module-header-gradient {
+  background: linear-gradient(180deg, 
+    hsl(var(--primary) / 0.08) 0%, 
+    hsl(var(--accent) / 0.04) 50%,
+    transparent 100%
+  );
+}
+
+.dark .module-header-gradient {
+  background: linear-gradient(180deg, 
+    hsl(var(--primary) / 0.15) 0%, 
+    hsl(var(--accent) / 0.08) 50%,
+    transparent 100%
+  );
+}
+
+/* Icon Container */
+.icon-container {
+  @apply relative;
+}
+
+.icon-container::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Slide in animation */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s ease-out forwards;
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Zebra striping for lesson lists */
+.lesson-list > *:nth-child(odd) {
+  @apply bg-muted/20;
+}
+
+.lesson-list > *:nth-child(even) {
+  @apply bg-transparent;
+}
+
+/* Content sections in lessons */
+.lesson-content h2 {
+  @apply relative pl-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:rounded-full;
+  @apply before:bg-gradient-to-b before:from-primary before:to-accent;
+}
+
+.lesson-content blockquote {
+  @apply border-l-4 border-primary/50 bg-primary/5 rounded-r-xl;
+}
+
+.lesson-content pre {
+  @apply border border-border/50 shadow-inner;
+}
+
+.lesson-content table thead {
+  @apply bg-primary/10;
+}
+
+.lesson-content table th {
+  @apply text-primary font-semibold;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

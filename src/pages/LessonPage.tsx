@@ -231,12 +231,12 @@ const LessonPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title={`${lesson.title} | ${module.title} | AI Evolution Polska`}
-        description={lesson.summary}
+        description={lesson.keyPoints[0] || lesson.title}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Article",
           headline: lesson.title,
-          description: lesson.summary,
+          description: lesson.keyPoints[0] || lesson.title,
           about: module.title,
           author: {
             "@type": "Organization",
