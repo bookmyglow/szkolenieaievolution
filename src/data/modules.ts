@@ -3232,7 +3232,7 @@ AI jako instrument i współtwórca, nie zamiennik artysty.
           "Automatyczny mastering demokratyzuje produkcję",
           "Pytania o prawa autorskie pozostają otwarte"
         ],
-        funFact: "W 2023 roku piosenka \"wygenerowana przez AI\" w stylu Drake'a i The Weeknd stała się viralem, zanim została usunięta!"
+        funFact: `W 2023 roku piosenka "wygenerowana przez AI" w stylu Drake'a i The Weeknd stała się viralem, zanim została usunięta!`,
       },
       {
         id: "6-5",
@@ -3612,7 +3612,7 @@ Te techniki wymuszają na AI głębsze myślenie.
 Prosimy AI, by myślało krok po kroku.
 
 ### Przykład
-\"Rozwiąż ten problem krok po kroku, pokazując tok rozumowania:\"
+"Rozwiąż ten problem krok po kroku, pokazując tok rozumowania:"
 
 ### Dlaczego działa?
 - Zmusza do logicznego myślenia
@@ -3620,25 +3620,25 @@ Prosimy AI, by myślało krok po kroku.
 - Pokazuje, gdzie może być problem
 
 ### Zero-shot CoT
-Dodaj: \"Let's think step by step\" lub \"Pomyślmy krok po kroku\"
+Dodaj: "Let's think step by step" lub "Pomyślmy krok po kroku"
 
 ## Tree of Thought (ToT)
 
 AI rozważa wiele ścieżek rozumowania równocześnie.
 
 ### Jak używać?
-\"Rozważ trzy różne podejścia do tego problemu. Dla każdego:
+"Rozważ trzy różne podejścia do tego problemu. Dla każdego:
 1. Opisz podejście
 2. Wymień za i przeciw
 3. Oceń szanse sukcesu
-Następnie wybierz najlepsze.\"
+Następnie wybierz najlepsze."
 
 ## Self-Consistency
 
 Proś AI o wiele odpowiedzi i wybierz najczęściej powtarzającą się.
 
 ### Przykład
-\"Odpowiedz na to pytanie 3 razy, każdorazowo myśląc od nowa. Następnie wybierz najbardziej wiarygodną odpowiedź.\"
+"Odpowiedz na to pytanie 3 razy, każdorazowo myśląc od nowa. Następnie wybierz najbardziej wiarygodną odpowiedź."
 
 ## Kiedy używać?
 
@@ -3660,14 +3660,14 @@ Proś AI o wiele odpowiedzi i wybierz najczęściej powtarzającą się.
         content: `
 # Uczenie AI przez przykłady
 
-Jak efektywnie \"pokazać\" AI, czego oczekujesz.
+Jak efektywnie "pokazać" AI, czego oczekujesz.
 
 ## Zero-shot
 
 AI wykonuje zadanie BEZ przykładów.
 
 ### Przykład
-\"Napisz haiku o programowaniu.\"
+"Napisz haiku o programowaniu."
 
 ### Kiedy używać?
 - Proste, jasne zadania
@@ -3678,22 +3678,22 @@ AI wykonuje zadanie BEZ przykładów.
 Dajesz JEDEN przykład.
 
 ### Przykład
-\"Napisz slogan reklamowy w stylu:
+"Napisz slogan reklamowy w stylu:
 Przykład: Nike – Just Do It
-Teraz dla marki ekologicznych butów:\"
+Teraz dla marki ekologicznych butów:"
 
 ## Few-shot
 
 Dajesz KILKA przykładów (2-5).
 
 ### Przykład
-\"Kategoryzuj recenzje:
+"Kategoryzuj recenzje:
 'Świetny produkt!' → Pozytywna
 'Nie polecam' → Negatywna
 'Jest OK' → Neutralna
 
 Teraz kategoryzuj:
-'Absolutnie fantastyczne!' →\"
+'Absolutnie fantastyczne!' →"
 
 ## Dobre praktyki
 
@@ -3731,9 +3731,9 @@ Jak budować złożone systemy z wielu promptów.
 Output jednego promptu staje się inputem następnego.
 
 ### Przykład przepływu
-1. Prompt 1: \"Wygeneruj 10 tematów na blog o AI\"
-2. Prompt 2: \"Dla tematu X napisz outline\"
-3. Prompt 3: \"Rozwiń punkt Y w pełny akapit\"
+1. Prompt 1: "Wygeneruj 10 tematów na blog o AI"
+2. Prompt 2: "Dla tematu X napisz outline"
+3. Prompt 3: "Rozwiń punkt Y w pełny akapit"
 
 ## Architektura łańcucha
 
@@ -3800,7 +3800,7 @@ Jak diagnozować i naprawiać problemy z promptami.
 **Rozwiązanie:** Dodaj więcej kontekstu i specyficznych instrukcji.
 
 ### 2. Halucynacje
-**Rozwiązanie:** Proś o źródła, używaj \"Jeśli nie wiesz, powiedz\"
+**Rozwiązanie:** Proś o źródła, używaj "Jeśli nie wiesz, powiedz"
 
 ### 3. Ignorowanie instrukcji
 **Rozwiązanie:** Powtórz kluczowe instrukcje na końcu promptu
@@ -3809,7 +3809,7 @@ Jak diagnozować i naprawiać problemy z promptami.
 **Rozwiązanie:** Daj konkretny przykład formatu
 
 ### 5. Za krótkie/długie odpowiedzi
-**Rozwiązanie:** Określ dokładną długość: \"w 3 paragrafach\" lub \"w 50 słowach\"
+**Rozwiązanie:** Określ dokładną długość: "w 3 paragrafach" lub "w 50 słowach"
 
 ## Techniki debugowania
 
@@ -3832,13 +3832,13 @@ Sprawdź, czy prompt jest odporny na manipulację.
 Czasem krótszy prompt działa lepiej!
 
 ### Słowa kluczowe
-\"WAŻNE:\", \"KRYTYCZNE:\", \"ZAWSZE:\"
+"WAŻNE:", "KRYTYCZNE:", "ZAWSZE:"
 
 ### Negatywne instrukcje
-\"NIE rób X\" może być skuteczniejsze niż \"Rób Y\"
+"NIE rób X" może być skuteczniejsze niż "Rób Y"
 
 ### Persona stacking
-\"Jesteś ekspertem X z 20-letnim doświadczeniem, który...\"
+"Jesteś ekspertem X z 20-letnim doświadczeniem, który..."
 
 ## Dokumentuj swoje odkrycia!
 

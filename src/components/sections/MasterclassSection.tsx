@@ -48,8 +48,8 @@ const steps = [
 
 const MasterclassSection = () => {
   return (
-    <section 
-      className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-slate-950 via-purple-950/50 to-slate-950"
+    <section
+      className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/80 to-slate-950"
       aria-labelledby="masterclass-heading"
     >
       {/* Animated background */}
@@ -87,22 +87,23 @@ const MasterclassSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-200/80 mb-4">Program premium</p>
+          <h2
             id="masterclass-heading"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-cyan-200 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-md"
           >
             AI Evolution Masterclass
           </h2>
-          <p className="text-xl md:text-2xl text-purple-200/80 max-w-2xl mx-auto">
-            Naucz się AI w praktyce i wyciśnij 100% z narzędzi, które już masz.
+          <p className="text-xl md:text-2xl text-purple-100/80 max-w-3xl mx-auto text-balance">
+            Strategiczny program dla osób, które chcą korzystać z AI w sposób uporządkowany, mierzalny i bez marketingowej przesady.
           </p>
         </div>
 
         {/* AI is not magic block */}
         <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <div className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 backdrop-blur-sm">
-            <p className="text-lg md:text-xl text-white/90 font-medium">
-              AI to nie czarna magia. Tłumaczymy wszystko krok po kroku, bez lania wody.
+          <div className="inline-block px-8 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-lg">
+            <p className="text-lg md:text-xl text-white/90 font-medium text-balance">
+              AI to zestaw narzędzi, które da się opanować metodycznie. Dostajesz jasne instrukcje, przykłady i gotowe szablony.
             </p>
           </div>
         </div>
@@ -112,9 +113,9 @@ const MasterclassSection = () => {
           {skills.map((skill, index) => (
             <article
               key={skill.title}
-              className="group relative p-6 rounded-2xl bg-slate-900/50 border border-purple-500/20 backdrop-blur-sm
-                         transition-all duration-500 hover:border-cyan-400/40 hover:bg-slate-800/50
-                         hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] hover:-translate-y-1
+              className="group relative p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md
+                         transition-all duration-500 hover:border-cyan-300/50 hover:bg-white/10
+                         hover:shadow-[0_0_40px_rgba(59,130,246,0.25)] hover:-translate-y-1
                          animate-fade-in"
               style={{ animationDelay: `${0.15 + index * 0.1}s` }}
               aria-labelledby={`skill-${index}-title`}
@@ -123,7 +124,7 @@ const MasterclassSection = () => {
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Icon */}
-              <div className="relative mb-4 w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-cyan-500/20 border border-purple-400/30 flex items-center justify-center group-hover:border-cyan-400/50 transition-colors duration-300">
+              <div className="relative mb-4 w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/30 to-cyan-500/30 border border-white/20 flex items-center justify-center group-hover:border-cyan-300/60 transition-colors duration-300">
                 <skill.icon className="w-7 h-7 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300" />
                 {/* Icon glow */}
                 <div className="absolute inset-0 rounded-xl bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -132,11 +133,11 @@ const MasterclassSection = () => {
               {/* Content */}
               <h3 
                 id={`skill-${index}-title`}
-                className="relative text-xl font-bold text-white mb-3 group-hover:text-cyan-100 transition-colors duration-300"
+                className="relative text-xl font-semibold text-white mb-2 group-hover:text-cyan-100 transition-colors duration-300"
               >
                 {skill.title}
               </h3>
-              <p className="relative text-purple-200/70 leading-relaxed group-hover:text-purple-100/80 transition-colors duration-300">
+              <p className="relative text-purple-100/70 leading-relaxed group-hover:text-purple-50/80 transition-colors duration-300 text-sm md:text-base">
                 {skill.description}
               </p>
             </article>
@@ -145,28 +146,28 @@ const MasterclassSection = () => {
 
         {/* Target Audience */}
         <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.7s' }}>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
             Dla kogo jest Masterclass?
           </h3>
-          <div className="flex flex-wrap justify-center gap-4 mb-6">
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
             {targetAudience.map((item) => (
               <div
                 key={item.label}
-                className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-400/30 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300"
+                className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm hover:border-cyan-300/60 transition-all duration-300"
               >
                 <item.icon className="w-5 h-5 text-cyan-400" />
                 <span className="text-white font-medium">{item.label}</span>
               </div>
             ))}
           </div>
-          <p className="text-purple-200/60 text-lg">
-            Nie musisz być techniczny. Liczy się praktyka.
+          <p className="text-purple-100/70 text-lg">
+            Nie musisz być techniczny – liczy się konsekwencja i praca na przykładach.
           </p>
         </div>
 
         {/* Steps */}
         <div className="mb-20 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-10">
             Jak wygląda nauka?
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -181,14 +182,14 @@ const MasterclassSection = () => {
                 )}
                 
                 {/* Step number */}
-                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-purple-500/30 to-cyan-500/30 border border-purple-400/40 group-hover:border-cyan-400/60 transition-all duration-300">
-                  <span className="text-3xl font-bold bg-gradient-to-r from-purple-300 to-cyan-300 bg-clip-text text-transparent">
+                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-purple-500/25 to-cyan-500/25 border border-white/10 group-hover:border-cyan-300/60 transition-all duration-300">
+                  <span className="text-3xl font-bold text-white">
                     {step.step}
                   </span>
                   <step.icon className="absolute -bottom-2 -right-2 w-8 h-8 p-1.5 rounded-lg bg-slate-900 border border-cyan-500/40 text-cyan-400" />
                 </div>
-                
-                <p className="text-lg text-white font-medium group-hover:text-cyan-100 transition-colors duration-300">
+
+                <p className="text-lg text-white font-medium group-hover:text-cyan-100 transition-colors duration-300 text-balance">
                   {step.title}
                 </p>
               </div>
@@ -201,22 +202,22 @@ const MasterclassSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <Button
               size="lg"
-              className="px-8 py-6 text-lg font-bold bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 border-0 shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] transition-all duration-300"
+              className="px-8 py-6 text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 border-0 shadow-[0_12px_50px_rgba(37,99,235,0.35)] transition-all duration-300"
               aria-label="Dołącz do AI Evolution Masterclass"
             >
-              Dołącz do Masterclass
+              Dołącz do programu
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="px-8 py-6 text-lg font-medium border-purple-400/40 text-purple-200 hover:bg-purple-500/10 hover:border-cyan-400/60 hover:text-white transition-all duration-300"
+              className="px-8 py-6 text-lg font-medium border-white/20 text-white/90 hover:bg-white/10 hover:border-cyan-300/60 hover:text-white transition-all duration-300"
               aria-label="Zobacz program Masterclass"
             >
               Zobacz program
             </Button>
           </div>
-          <p className="text-purple-200/60 text-lg">
-            Krok po kroku. Bez chaosu. Z efektami.
+          <p className="text-purple-100/70 text-lg">
+            Uporządkowana ścieżka, konkretne rezultaty i wsparcie w trakcie wdrożeń.
           </p>
         </div>
       </div>

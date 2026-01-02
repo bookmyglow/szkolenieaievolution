@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProgressProvider } from "@/context/ProgressContext";
+import AnimatedBackground from "@/components/layout/AnimatedBackground";
 
 const Index = lazy(() => import("./pages/Index"));
 const ModulePage = lazy(() => import("./pages/ModulePage"));
@@ -23,31 +24,34 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ProgressProvider>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Suspense
-            fallback={
-              <div className="min-h-screen flex items-center justify-center bg-background text-muted-foreground">
-                Ładowanie...
-              </div>
-            }
-          >
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/moduly" element={<AllModulesPage />} />
-              <Route path="/modul/:moduleSlug" element={<ModulePage />} />
-              <Route path="/modul/:moduleSlug/lekcja/:lessonId" element={<LessonPage />} />
-              <Route path="/modul/:moduleSlug/quiz" element={<QuizPage />} />
-              <Route path="/profil" element={<ProfilePage />} />
-              <Route path="/slownik" element={<GlossaryPage />} />
-              <Route path="/narzedzia" element={<ResourcesPage />} />
-              <Route path="/zasoby" element={<ResourcesPage />} />
-              <Route path="/certyfikat" element={<CertificatePage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
+        <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
+          <AnimatedBackground />
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Suspense
+              fallback={
+                <div className="min-h-screen flex items-center justify-center bg-background text-muted-foreground">
+                  Ładowanie...
+                </div>
+              }
+            >
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/moduly" element={<AllModulesPage />} />
+                <Route path="/modul/:moduleSlug" element={<ModulePage />} />
+                <Route path="/modul/:moduleSlug/lekcja/:lessonId" element={<LessonPage />} />
+                <Route path="/modul/:moduleSlug/quiz" element={<QuizPage />} />
+                <Route path="/profil" element={<ProfilePage />} />
+                <Route path="/slownik" element={<GlossaryPage />} />
+                <Route path="/narzedzia" element={<ResourcesPage />} />
+                <Route path="/zasoby" element={<ResourcesPage />} />
+                <Route path="/certyfikat" element={<CertificatePage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </div>
       </TooltipProvider>
     </ProgressProvider>
   </QueryClientProvider>

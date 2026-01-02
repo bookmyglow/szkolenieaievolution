@@ -105,7 +105,9 @@ export const useAIChat = (options: UseAIChatOptions = {}) => {
             const parsed = JSON.parse(jsonStr);
             const content = parsed.choices?.[0]?.delta?.content;
             if (content) updateAssistant(content);
-          } catch {}
+          } catch (parseError) {
+            console.warn("Nie udało się sparsować fragmentu odpowiedzi AI:", parseError, jsonStr);
+          }
         }
       }
     } catch (err) {
