@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { CheckCircle2, Circle, Clock, PlayCircle } from "lucide-react";
+import { CheckCircle2, Clock, PlayCircle, ArrowRight, BookOpen, Brain, Code, Image, Lightbulb, MessageSquare, Sparkles, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface LessonCardProps {
@@ -13,6 +13,19 @@ interface LessonCardProps {
   isCurrent?: boolean;
 }
 
+// Map keywords to icons for visual interest
+const getIconForTitle = (title: string) => {
+  const lowerTitle = title.toLowerCase();
+  if (lowerTitle.includes('historia') || lowerTitle.includes('ewoluc')) return BookOpen;
+  if (lowerTitle.includes('machine') || lowerTitle.includes('uczeni') || lowerTitle.includes('ml')) return Brain;
+  if (lowerTitle.includes('kod') || lowerTitle.includes('program') || lowerTitle.includes('python')) return Code;
+  if (lowerTitle.includes('obraz') || lowerTitle.includes('grafik') || lowerTitle.includes('wizual')) return Image;
+  if (lowerTitle.includes('prompt') || lowerTitle.includes('generowan')) return Sparkles;
+  if (lowerTitle.includes('czat') || lowerTitle.includes('konwersac') || lowerTitle.includes('asystent')) return MessageSquare;
+  if (lowerTitle.includes('praktyk') || lowerTitle.includes('zastosow')) return Zap;
+  return Lightbulb;
+};
+
 const LessonCard = ({ 
   id, 
   moduleSlug, 
@@ -22,52 +35,76 @@ const LessonCard = ({
   isCompleted = false,
   isCurrent = false
 }: LessonCardProps) => {
+  const LessonIcon = getIconForTitle(title);
+  
   return (
     <Link to={`/modul/${moduleSlug}/lekcja/${id}`}>
       <Card 
         className={cn(
-          "group transition-all duration-300 hover:shadow-md cursor-pointer",
-          isCurrent && "ring-2 ring-primary shadow-md",
-          isCompleted && "bg-success/5"
+          "lesson-card group border-2 transition-all duration-300 hover:shadow-lg cursor-pointer",
+          isCurrent && "lesson-card-current ring-2 ring-cyan shadow-md bg-cyan/5 border-cyan/30",
+          isCompleted && "lesson-card-completed bg-success/5 border-success/30",
+          !isCurrent && !isCompleted && "border-border/60 hover:border-primary/40 hover:bg-primary/5"
         )}
       >
         <CardContent className="p-4">
           <div className="flex items-center gap-4">
+            {/* Index Badge with gradient */}
             <div className={cn(
-              "w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors",
+              "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm",
               isCompleted 
-                ? "bg-success/20 text-success" 
+                ? "bg-gradient-to-br from-success to-emerald-600 text-white" 
                 : isCurrent 
-                  ? "bg-primary/20 text-primary" 
-                  : "bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary"
+                  ? "bg-gradient-to-br from-cyan to-primary text-white shadow-md" 
+                  : "bg-muted/80 text-muted-foreground group-hover:bg-gradient-to-br group-hover:from-primary/20 group-hover:to-accent/20 group-hover:text-primary"
             )}>
               {isCompleted ? (
-                <CheckCircle2 className="w-5 h-5" />
+                <CheckCircle2 className="w-6 h-6" />
               ) : isCurrent ? (
-                <PlayCircle className="w-5 h-5" />
+                <PlayCircle className="w-6 h-6" />
               ) : (
-                <span className="font-semibold text-sm">{index}</span>
+                <span className="font-bold text-lg">{index}</span>
               )}
             </div>
             
+            {/* Content */}
             <div className="flex-1 min-w-0">
-              <h3 className={cn(
-                "font-medium truncate group-hover:text-primary transition-colors",
-                isCompleted && "text-muted-foreground"
-              )}>
-                {title}
-              </h3>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
-                <Clock className="w-3 h-3" />
-                <span>{duration}</span>
+              <div className="flex items-center gap-2 mb-1">
+                <LessonIcon className={cn(
+                  "w-4 h-4 shrink-0",
+                  isCompleted ? "text-success" : isCurrent ? "text-cyan" : "text-muted-foreground group-hover:text-primary"
+                )} />
+                <h3 className={cn(
+                  "font-semibold truncate transition-colors",
+                  isCompleted ? "text-muted-foreground" : isCurrent ? "text-foreground" : "group-hover:text-primary"
+                )}>
+                  {title}
+                </h3>
+              </div>
+              <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <Clock className="w-3 h-3" />
+                  <span>{duration}</span>
+                </div>
+                {isCompleted && (
+                  <span className="text-success font-medium">Ukończono</span>
+                )}
+                {isCurrent && (
+                  <span className="text-cyan font-medium">W trakcie</span>
+                )}
               </div>
             </div>
             
+            {/* Arrow indicator */}
             <div className={cn(
-              "w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity",
-              "bg-primary/10 text-primary"
+              "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300",
+              isCompleted 
+                ? "bg-success/10 text-success" 
+                : isCurrent 
+                  ? "bg-cyan/10 text-cyan"
+                  : "bg-muted/50 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:bg-primary/10 group-hover:text-primary"
             )}>
-              <PlayCircle className="w-4 h-4" />
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </div>
           </div>
         </CardContent>
