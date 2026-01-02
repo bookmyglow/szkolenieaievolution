@@ -28,7 +28,7 @@ const PathSection = () => {
   });
 
   return (
-    <section className="py-24 relative overflow-hidden bg-muted/30">
+    <section className="py-16 md:py-20 relative overflow-hidden bg-muted/30">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/3 rounded-full blur-3xl" />
@@ -36,18 +36,17 @@ const PathSection = () => {
 
       <div className="container mx-auto px-6">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <Award className="w-4 h-4" />
             Ścieżka nauki
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
             Twoja droga do{" "}
             <span className="text-gradient-primary">mistrzostwa AI</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            7 modułów, które przeprowadzą Cię od podstaw do zaawansowanych technik. 
-            Każdy moduł to nowy poziom umiejętności.
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            7 modułów, które przeprowadzą Cię od podstaw do zaawansowanych technik, bez zbędnych wypełniaczy.
           </p>
         </div>
 
@@ -56,7 +55,7 @@ const PathSection = () => {
           {/* Connection line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-success -translate-x-1/2 hidden lg:block rounded-full" />
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {modules.map((module, index) => {
               const progress = getModuleProgress ? getModuleProgress(module.slug, module.lessons.length) : 0;
               const isCompleted = progress >= 100;
@@ -75,25 +74,25 @@ const PathSection = () => {
                       to={`/modul/${module.slug}`}
                       className="block group"
                     >
-                      <div className="bg-card border border-border/50 rounded-2xl p-6 card-hover inline-block w-full max-w-md">
+                      <div className="bg-card border border-border/50 rounded-2xl p-5 card-hover inline-block w-full max-w-md">
                         <div className={`flex items-center gap-4 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
                           <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${colorClass} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
                             <IconComponent className="w-7 h-7 text-white" />
                           </div>
                           <div className={isEven ? 'lg:text-right' : ''}>
                             <p className="text-sm text-muted-foreground mb-1">Moduł {module.id}</p>
-                            <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                            <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                               {module.title}
                             </h3>
-                            <p className="text-sm text-muted-foreground mt-1">
-                              {module.lessons.length} lekcji • {isCompleted ? '✓ Ukończono' : `${Math.round(progress)}% ukończono`}
+                            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                              {module.lessons.length} lekcji • {isCompleted ? '✓ Ukończono' : `${Math.round(progress)}% ukończone`}
                             </p>
                           </div>
                         </div>
                         
                         {/* Progress bar */}
                         <div className="mt-4 w-full h-2 bg-muted rounded-full overflow-hidden">
-                          <div 
+                          <div
                             className={`h-full bg-gradient-to-r ${colorClass} rounded-full transition-all duration-500`}
                             style={{ width: `${progress}%` }}
                           />
@@ -133,7 +132,7 @@ const PathSection = () => {
             </div>
           </div>
           
-          <div className="text-center">
+          <div className="text-center mt-6">
             {allModulesCompleted ? (
               <Link to="/certyfikat">
                 <div className="inline-block bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-6 hover:scale-105 transition-transform cursor-pointer">

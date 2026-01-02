@@ -8,7 +8,7 @@ export const useTheme = () => {
             const stored = localStorage.getItem('theme') as Theme;
             if (stored) return stored;
         }
-        return 'system';
+        return 'light';
     });
 
     const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');

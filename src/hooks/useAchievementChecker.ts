@@ -89,7 +89,7 @@ export const useAchievementChecker = () => {
   // Check achievements when relevant state changes
   useEffect(() => {
     checkAchievements();
-  }, [lessons.length, quizzes.length, points, streak]);
+  }, [checkAchievements, lessons.length, quizzes.length, points, streak]);
 
   return { checkAchievements };
 };
