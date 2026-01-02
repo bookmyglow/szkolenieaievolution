@@ -49,7 +49,7 @@ const AIChatbot = ({ lessonContext }: AIChatbotProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
-    
+
     sendMessage(input.trim());
     setInput("");
   };
@@ -89,7 +89,9 @@ const AIChatbot = ({ lessonContext }: AIChatbotProps) => {
             </div>
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-2 text-xs text-muted-foreground bg-muted/60 px-3 py-1 rounded-full">
-                <span className={cn("w-2 h-2 rounded-full", isLoading ? "bg-primary animate-pulse" : "bg-green-500")}></span>
+                <span
+                  className={cn("w-2 h-2 rounded-full", isLoading ? "bg-primary animate-pulse" : "bg-green-500")}
+                ></span>
                 {isLoading ? "Piszę odpowiedź" : "Online"}
               </span>
               {messages.length > 0 && (
@@ -107,7 +109,10 @@ const AIChatbot = ({ lessonContext }: AIChatbotProps) => {
           </div>
         </SheetHeader>
 
-        <ScrollArea className="flex-1 p-4 bg-gradient-to-b from-background/80 via-background to-background/90" ref={scrollRef}>
+        <ScrollArea
+          className="flex-1 p-4 bg-gradient-to-b from-background/80 via-background to-background/90"
+          ref={scrollRef}
+        >
           {messages.length === 0 ? (
             <div className="space-y-4">
               <div className="text-center py-8">
@@ -116,14 +121,12 @@ const AIChatbot = ({ lessonContext }: AIChatbotProps) => {
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Cześć! Jestem Evolution Bot</h3>
                 <p className="text-muted-foreground text-sm">
-                  Pomogę ci zrozumieć i opanować świat AI, szybko i z humorem. Zadaj mi dowolne pytanie!
+                  Pomogę ci zrozumieć i opanować świat AI. Zadaj mi dowolne pytanie!
                 </p>
               </div>
 
               <div className="space-y-2">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">
-                  Popularne pytania
-                </p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Popularne pytania</p>
                 {suggestedQuestions.map((question, index) => (
                   <button
                     key={index}
@@ -141,7 +144,7 @@ const AIChatbot = ({ lessonContext }: AIChatbotProps) => {
               {messages.map((message, index) => (
                 <ChatMessage key={index} {...message} />
               ))}
-              {isLoading && messages[messages.length - 1]?.role === 'user' && (
+              {isLoading && messages[messages.length - 1]?.role === "user" && (
                 <div className="flex gap-3 p-4">
                   <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
                     <Sparkles className="w-4 h-4 text-accent-foreground animate-spin" />
