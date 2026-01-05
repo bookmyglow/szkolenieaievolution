@@ -37,6 +37,16 @@ export interface Module {
   quiz: QuizQuestion[];
 }
 
+// Hero images for modules
+import module1Hero from "@/assets/modules/module-1-hero.jpg";
+import module2Hero from "@/assets/modules/module-2-hero.jpg";
+import module3Hero from "@/assets/modules/module-3-hero.jpg";
+import module4Hero from "@/assets/modules/module-4-hero.jpg";
+import module5Hero from "@/assets/modules/module-5-hero.jpg";
+import module6Hero from "@/assets/modules/module-6-hero.jpg";
+import module7Hero from "@/assets/modules/module-7-hero.jpg";
+import module8Hero from "@/assets/modules/module-8-hero.jpg";
+
 export const modules: Module[] = [
   {
     id: 1,
@@ -47,6 +57,10 @@ export const modules: Module[] = [
     duration: "75 min",
     lessonsCount: 9,
     color: "primary",
+    heroImage: {
+      src: module1Hero,
+      alt: "Robot nauczyciel w futurystycznej sali komputerowej z holograficznymi ekranami"
+    },
     lessons: [
       {
         id: "1-1",
@@ -880,6 +894,10 @@ Zastanów się:
     duration: "70 min",
     lessonsCount: 7,
     color: "accent",
+    heroImage: {
+      src: module2Hero,
+      alt: "Wizualizacja sieci neuronowej z przepływem tekstu i danymi językowymi"
+    },
     lessons: [
       {
         id: "2-1",
@@ -1444,6 +1462,10 @@ Stwórz mega-prompt dla: "Asystent do nauki języka hiszpańskiego dla początku
     duration: "75 min",
     lessonsCount: 7,
     color: "primary",
+    heroImage: {
+      src: module3Hero,
+      alt: "Abstrakcyjna wizualizacja generowania obrazów AI z kolorowymi kształtami"
+    },
     lessons: [
       {
         id: "3-1",
@@ -1950,6 +1972,10 @@ Porównaj wyniki – który generator najlepiej obsłużył tekst?
     duration: "90 min",
     lessonsCount: 8,
     color: "accent",
+    heroImage: {
+      src: module4Hero,
+      alt: "Nowoczesne biurko z narzędziami AI i automatyzacją workflow"
+    },
     lessons: [
       {
         id: "4-1",
@@ -2580,6 +2606,10 @@ Ukończyłeś kurs **AIStart**. Teraz wiesz więcej o AI niż większość ludzi
     duration: "70 min",
     lessonsCount: 7,
     color: "primary",
+    heroImage: {
+      src: module5Hero,
+      alt: "Waga sprawiedliwości z elementami AI symbolizująca etykę"
+    },
     lessons: [
       {
         id: "5-1",
@@ -3020,6 +3050,10 @@ AI Act + RODO = kompleksowa ochrona w UE
     duration: "70 min",
     lessonsCount: 7,
     color: "accent",
+    heroImage: {
+      src: module6Hero,
+      alt: "Studio kreatywne z narzędziami AI do tworzenia contentu"
+    },
     lessons: [
       {
         id: "6-1",
@@ -3543,6 +3577,10 @@ Analiza → AI insights
     duration: "65 min",
     lessonsCount: 7,
     color: "primary",
+    heroImage: {
+      src: module7Hero,
+      alt: "Terminal z kodem i magicznymi efektami prompt engineering"
+    },
     lessons: [
       {
         id: "7-1",
@@ -4084,8 +4122,8 @@ Stwórz własną bibliotekę promptów w Notion lub Obsidian!
     lessonsCount: 5,
     color: "accent",
     heroImage: {
-      src: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1400&q=80",
-      alt: "Zespół planujący multimodalny projekt AI na tablicy koncepcyjnej",
+      src: module8Hero,
+      alt: "Centralna sfera AI z przepływem tekstu, obrazów i wideo"
     },
     gallery: [
       {

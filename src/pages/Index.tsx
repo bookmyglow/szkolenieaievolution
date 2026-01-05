@@ -10,6 +10,8 @@ import DiscoverSection from "@/components/sections/DiscoverSection";
 import CommunitySection from "@/components/sections/CommunitySection";
 import AboutAIEvolutionSection from "@/components/sections/AboutAIEvolutionSection";
 import MasterclassSection from "@/components/sections/MasterclassSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import FAQSection from "@/components/sections/FAQSection";
 import AIChatbot from "@/components/chat/AIChatbot";
 import SEO from "@/components/seo/SEO";
 
@@ -59,6 +61,8 @@ const Index = () => {
         <div className="bg-muted/20">
           <CommunitySection />
         </div>
+        <TestimonialsSection />
+        <FAQSection />
       </main>
       <Footer />
       <AIChatbot />
