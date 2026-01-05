@@ -6,9 +6,10 @@ import { modules } from "@/data/modules";
 import PointsDisplay from "@/components/gamification/PointsDisplay";
 import StreakCounter from "@/components/gamification/StreakCounter";
 import BadgesGrid from "@/components/gamification/BadgesGrid";
+import DailyChallenge from "@/components/gamification/DailyChallenge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Trophy, Target, ArrowRight, CheckCircle2 } from "lucide-react";
+import { BookOpen, Trophy, Target, ArrowRight, CheckCircle2, TrendingUp, Calendar } from "lucide-react";
 import AIChatbot from "@/components/chat/AIChatbot";
 import SEO from "@/components/seo/SEO";
 
@@ -127,6 +128,11 @@ const ProfilePage = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <PointsDisplay variant="full" />
               <StreakCounter variant="full" />
+            </div>
+
+            {/* Daily Challenge */}
+            <div className="mb-8">
+              <DailyChallenge />
             </div>
 
             {/* Achievements */}

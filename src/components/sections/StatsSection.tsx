@@ -4,21 +4,21 @@ import { BookOpen, Award, HelpCircle, Users, Star, Clock } from "lucide-react";
 const stats = [
   {
     icon: BookOpen,
-    value: 7,
+    value: 8,
     label: "Modułów szkoleniowych",
     suffix: "",
     color: "primary",
   },
   {
     icon: Star,
-    value: 40,
+    value: 55,
     label: "Interaktywnych lekcji",
-    suffix: "",
+    suffix: "+",
     color: "accent",
   },
   {
     icon: HelpCircle,
-    value: 35,
+    value: 60,
     label: "Pytań quizowych",
     suffix: "+",
     color: "success",
@@ -32,14 +32,14 @@ const stats = [
   },
   {
     icon: Users,
-    value: 2500,
+    value: 3500,
     label: "Aktywnych uczniów",
     suffix: "+",
     color: "accent",
   },
   {
     icon: Clock,
-    value: 15,
+    value: 20,
     label: "Godzin materiału",
     suffix: "+",
     color: "success",
